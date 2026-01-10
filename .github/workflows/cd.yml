@@ -31,5 +31,9 @@ jobs:
       - name: Install Aspire Workload
         run: dotnet workload install aspire
 
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
       - name: Deploy Application
         run: aspire deploy --debug
