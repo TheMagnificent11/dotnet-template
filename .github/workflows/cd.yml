@@ -48,5 +48,4 @@ jobs:
           aspire deploy \
             --environment Production \
             --clear-cache \
-            --include-exception-details \
-            --debug
+            --include-exception-details
