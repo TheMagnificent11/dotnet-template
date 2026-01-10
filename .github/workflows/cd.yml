@@ -1,15 +1,22 @@
 name: Continuous Deployment
 
-# `azure/login@v1` Repository Action Secrets
-# See: https://github.com/azure/login/tree/v1/?tab=readme-ov-file
-# AZURE__TENANTID
-# AZURE__SUBSCRIPTIONID
+# `azure/login@v1`
+#   See: https://github.com/azure/login/tree/v1/?tab=readme-ov-file
+#
+#   Repository Action Secrets
+#     AZURE__TENANTID
+#     AZURE__SUBSCRIPTIONID
 
-# `aspire deploy` Repository Action Secrets
-# See: https://aspire.dev/reference/cli/commands/aspire-deploy/ & https://aspire.dev/get-started/deploy-first-app/?lang=csharp#deploy-your-app
-# AZURE__SUBSCRIPTIONID
-# AZURE__RESOURCEGROUP
-# AZURE__LOCATION
+# `aspire deploy`
+#   See: https://aspire.dev/reference/cli/commands/aspire-deploy/ & https://aspire.dev/get-started/deploy-first-app/?lang=csharp#deploy-your-app
+#
+#   Ensure ./aspire/settings.json has `appHostPath` set to Aspire App Host csproj-file to use for deployment
+#
+#   Repository Action Secrets
+#     AZURE__SUBSCRIPTIONID
+#     AZURE__RESOURCEGROUP
+#     AZURE__LOCATION
+
 
 on:
   workflow_dispatch:
