@@ -1,9 +1,11 @@
 name: Continuous Deployment
 
 # `azure/login@v1`
-#   See: https://github.com/azure/login/tree/v1/?tab=readme-ov-file
+#   See: https://github.com/azure/login/tree/v1/
 #
 #   Repository Action Secrets
+#     AZURE__CLIENTID (Microsoft Entra ID App Registration must have sufficient permissions to deploy resources to the Azure Subscription)
+#     AZURE__CLIENTSECRET (automatically read by action, no need to pass as parameter)
 #     AZURE__TENANTID
 #     AZURE__SUBSCRIPTIONID
 
@@ -12,7 +14,7 @@ name: Continuous Deployment
 #
 #   Ensure ./aspire/settings.json has `appHostPath` set to Aspire App Host csproj-file to use for deployment
 #
-#   Repository Action Secrets
+#   Repository Action Secrets (all automatically read from secrets by Aspire CLI, no need to pass as parameters)
 #     AZURE__SUBSCRIPTIONID
 #     AZURE__RESOURCEGROUP
 #     AZURE__LOCATION
@@ -48,6 +50,7 @@ jobs:
         uses: azure/login@v1
         with:
           tenant-id: ${{ secrets.AZURE__TENANTID }}
+          client-id: ${{ secrets.AZURE__CLIENTID }}
           subscription-id: ${{ secrets.AZURE__SUBSCRIPTIONID }}
 
       - name: Deploy Application
