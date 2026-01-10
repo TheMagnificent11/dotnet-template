@@ -12,7 +12,7 @@ name: Continuous Deployment
 # `aspire deploy`
 #   See: https://aspire.dev/reference/cli/commands/aspire-deploy/ & https://aspire.dev/get-started/deploy-first-app/?lang=csharp#deploy-your-app
 #
-#   Ensure ./aspire/settings.json has `appHostPath` set to Aspire App Host csproj-file to use for deployment
+#   Ensure `./aspire/settings.json` has `appHostPath` set to Aspire App Host csproj-file to use for deployment
 #
 #   Repository Action Secrets (all automatically read from secrets by Aspire CLI, no need to pass as parameters)
 #     AZURE__SUBSCRIPTIONID
