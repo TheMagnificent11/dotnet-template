@@ -8,7 +8,7 @@ on:
         type: boolean
 
 permissions:
-  contents: read
+  contents: write
   pull-requests: write
 
 jobs:
@@ -38,6 +38,19 @@ jobs:
       - name: Install HTTPS development certificate
         run: dotnet dev-certs https --trust
 
+      - name: Install GitVersion
+        uses: gittools/actions/gitversion/setup@v3.1.11
+        with:
+          versionSpec: '6.0.x'
+          preferLatestVersion: true
+          includePrerelease: true
+
+      - name: Determine Version
+        id: version
+        uses: gittools/actions/gitversion/execute@v3.1.11
+        with:
+          useConfigFile: true
+
       - name: Install Dependencies
         run: dotnet restore --nologo
 
@@ -45,12 +58,7 @@ jobs:
         run: dotnet build --configuration Release --no-restore --nologo
 
       - name: Test
-        run: |
-          dotnet-coverage collect \
-            "dotnet test --configuration Release --no-build --nologo" \
-            --settings coverage.xml \
-            --output-format cobertura \
-            --output ./coverage/coverage.cobertura.xml
+        run: dotnet-coverage collect "dotnet test --configuration Release --no-build --nologo" --settings coverage.xml -f cobertura -o ./coverage/coverage.cobertura.xml
 
       - name: Generate Coverage Report
         if: ${{ inputs.is-pr == true }}
@@ -59,6 +67,7 @@ jobs:
             -reports:"coverage/coverage.cobertura.xml" \
             -targetdir:"coverage-report" \
             -reporttypes:"MarkdownSummaryGithub;Cobertura" \
+            -assemblyfilters:"-Fluxor*" \
             -verbosity:"Warning"
 
       - name: Add Coverage PR Comment
@@ -76,4 +85,11 @@ jobs:
           threshold: 90
           base-sha: ${{ github.event.pull_request.base.sha }}
           head-sha: ${{ github.sha }}
+
+      - name: Pack
+        run: dotnet pack --configuration Release --nologo /p:PackageVersion=${{ steps.version.outputs.fullSemVer }} --output ./output
+
+      - name: Publish to NuGet
+        run: dotnet nuget push ./output/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+        if: github.ref == 'refs/heads/main'
 
