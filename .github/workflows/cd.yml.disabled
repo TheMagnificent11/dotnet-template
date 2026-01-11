@@ -1,3 +1,9 @@
+# THIS WORKFLOW IS DISABLED
+# To enable, rename file to `cd.yml`
+
+# 2026-06-12 Not Reliable
+# At the time of writing,`aspire deploy` was in preview and had some reliability issues.
+
 name: Continuous Deployment
 
 # `azure/login@v1`
