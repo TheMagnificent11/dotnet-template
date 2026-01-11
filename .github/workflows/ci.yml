@@ -1,12 +1,12 @@
-name: CI
+name: Continuous Integration
 
 on:
   workflow_dispatch:
   push:
-    branches: [ main ]
+    branches: [ develop, main ]
 
 permissions:
-  contents: read
+  contents: write
   pull-requests: write
 
 jobs:
