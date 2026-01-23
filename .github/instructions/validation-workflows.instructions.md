@@ -8,9 +8,9 @@ applyTo: "**/*.cs,**/*.csproj"
 
 **Decision Tree:**
 ```
-Did you change framework code (Lewee.*)?
+Did you change framework code?
 ├─ YES → Run all 4 validation workflows below
-└─ NO → Did you change sample app (Pizzeria.*)?
+└─ NO → Did you change sample app?
     ├─ YES → Run workflows 1, 2, and 3
     └─ NO → Did you only change documentation?
         ├─ YES → Run workflow 1 only
@@ -19,7 +19,7 @@ Did you change framework code (Lewee.*)?
 
 ## Workflow 1: Framework Build Validation
 
-**When:** After any framework (Lewee.*) changes
+**When:** After any framework changes
 
 **Commands:**
 ```bash
@@ -27,7 +27,7 @@ dotnet build --configuration Release --nologo
 ```
 
 **Success Criteria:**
-- All Lewee.* projects compile successfully
+- All projects compile successfully
 - Zero compilation warnings
 - Zero style violations
 

@@ -10,7 +10,7 @@ TODO
 
 - [.NET 10 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/10.0)
 - [.NET Aspire workload](https://learn.microsoft.com/en-us/dotnet/aspire/fundamentals/setup-tooling?tabs=linux#install-net-aspire) (`dotnet workload install aspire`)
-- [Docker Desktop](https://www.docker.com/products/docker-desktop/) (for PostgreSQL and Mealie containers)
+- [Docker Desktop](https://www.docker.com/products/docker-desktop/) (for container support)
 
 ## Running the Application
 

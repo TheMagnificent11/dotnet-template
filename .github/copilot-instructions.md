@@ -1,4 +1,4 @@
-# Mealie Aspire Development Instructions
+# Development Instructions
 
 This file provides an overview and links to detailed Copilot instructions for different aspects of development in this repository.
 
