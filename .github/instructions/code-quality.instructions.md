@@ -11,7 +11,7 @@ applyTo: "**/*.cs,**/*.csproj"
 | Warnings as Errors | Enabled | Build fails on any warning |
 | Code Style in Build | Enforced | Style violations break the build |
 | Documentation Generation | Required | All framework projects must generate XML docs |
-| Code Coverage | Required for Framework | Pull requests with changes to `src/` directory (Lewee packages) must have at least 90% line coverage |
+| Code Coverage | Required for Framework | Pull requests with changes to `src/` directory must have at least 90% line coverage |
 
 ## Dependency Management
 
@@ -94,7 +94,7 @@ All build configuration is centrally managed through a hierarchy of configuratio
 
 **Format Command:**
 ```bash
-dotnet format lewee.sln
+dotnet format
 ```
 
 **Configuration:**
@@ -108,7 +108,7 @@ dotnet format lewee.sln
 - [ ] No unused usings or variables
 - [ ] No magic strings or numbers, use constants or enums
 - [ ] Address compiler information messages that result for Roslyn analyzers
-- [ ] XML documentation for public and protected APIs **only** for C# projects within the `src` directory (Lewee framework packages)
+- [ ] XML documentation for public and protected APIs **only** for C# projects within the `src` directory
 - [ ] No XML documentation for sample application code (`sample/` directory)
 - [ ] Follows existing patterns in the codebase
 - [ ] Framework changes (`src/` directory) have at least 90% line coverage
